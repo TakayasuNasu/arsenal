@@ -10,6 +10,8 @@ Arsenal
 - 認証
 - スケジュール
 - todo
+- 社員一覧
+- 出向先をgooglemapに表示
 
 #### Versions
 
