@@ -38,6 +38,8 @@ gem 'devise'
 
 gem 'tzinfo-data'
 
+gem 'omniauth', '~> 1.0'
+gem 'omniauth-yammer'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
