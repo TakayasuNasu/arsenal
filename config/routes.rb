@@ -1,4 +1,5 @@
 Arsenal::Application.routes.draw do
+
   devise_for :staffs, controllers: {
     omniauth_callbacks: "staffs/omniauth_callbacks"
   }
