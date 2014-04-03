@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140330044742) do
+ActiveRecord::Schema.define(version: 20140401143542) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",               default: "", null: false
@@ -27,5 +27,34 @@ ActiveRecord::Schema.define(version: 20140330044742) do
   end
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+
+  create_table "staffs", force: true do |t|
+    t.integer  "yammer_id",           default: 0,     null: false
+    t.string   "full_name",           default: "",    null: false
+    t.string   "first_name",          default: "",    null: false
+    t.string   "last_name",           default: "",    null: false
+    t.string   "nick_name",           default: "",    null: false
+    t.string   "email",               default: "",    null: false
+    t.string   "encrypted_password",  default: "",    null: false
+    t.string   "twwite"
+    t.string   "mugshot_url",         default: "",    null: false
+    t.integer  "prefecture_id"
+    t.integer  "group_id"
+    t.boolean  "group_leader",        default: false
+    t.integer  "department_id"
+    t.integer  "loan_company_id"
+    t.date     "joined",                              null: false
+    t.string   "token"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",       default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "staffs", ["email"], name: "index_staffs_on_email", unique: true, using: :btree
 
 end

@@ -7,7 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div id="staff-info">
+  <% if staff_signed_in? %>
+    <%= current_staff.full_name %>
+    [<%= link_to 'Sign out', destroy_staff_session_path, method: :delete  %>]
+  <% else %>
+    <%= link_to "Sign in with yammer", staff_omniauth_authorize_path(:yammer) %>
+  <% end %>
+</div>
 <%= yield %>
 
 </body>

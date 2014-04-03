@@ -1,6 +1,15 @@
 Arsenal::Application.routes.draw do
+  devise_for :staffs, controllers: {
+    omniauth_callbacks: "staffs/omniauth_callbacks"
+  }
+  get "home/index"
+  get "welcome/index"
   devise_for :admin_users
   mount RailsAdmin::Engine => '/btm_admin', :as => 'rails_admin'
+
+  root "welcome#index"
+  get "home", to: "home#index", as: "staff_root"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
