@@ -1,10 +1,18 @@
 Arsenal::Application.routes.draw do
 
+  # /staffs/sign_in でパスワード入力画面に遷移させない
+  devise_scope :staff do
+    get "/staffs/sign_in", :to => "welcome#index"
+  end
+
   devise_for :staffs, controllers: {
     omniauth_callbacks: "staffs/omniauth_callbacks"
   }
+
   get "home/index"
   get "welcome/index"
+
+  # 管理画面用
   devise_for :admin_users
   mount RailsAdmin::Engine => '/btm_admin', :as => 'rails_admin'
 
