@@ -2,7 +2,7 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
 
-  config.omniauth :yammer, "6Jxsq4NaqCAgQSVSU3kHgw", "z4eoBTx8esvKHYxQyh9Rkluz0kbQ0A3VpqJ5XEXSTM"
+  config.omniauth :yammer, Constants.ClientId, Constants.ClientSecret
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing

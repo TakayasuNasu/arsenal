@@ -15,5 +15,6 @@
 /log/*.log
 /tmp
 
+/config/constants.yml
 .DS_Store
 .project
