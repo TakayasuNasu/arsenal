@@ -16,9 +16,29 @@ Arsenal
 
 #### Versions
 
+- 0.0.4 [2014/04/05] 設定ファイル外部化
 - 0.0.3 [2014/04/01] yammer認証機能追加
 - 0.0.2 [2014/03/30] 管理画面機能追加
 - 0.0.1 [2014/03/21]
+
+#### Usage
+- `config/` 以下に `constants.yml` を下記を参考に作成
+```yml
+defaults: &defaults
+  ClientId: "YourClientID"
+  ClientSecret: "YourClientSecret"
+  network_id: "YourNetworkID"
+  token: "YourToken"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+```
 
 #### License
 
