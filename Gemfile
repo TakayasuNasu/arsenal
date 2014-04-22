@@ -45,6 +45,9 @@ gem 'settingslogic'
 
 gem 'yam'
 
+gem 'angularjs-rails'
+gem 'angularjs-rails-resource', '~> 0.2.3'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

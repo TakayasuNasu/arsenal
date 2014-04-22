@@ -1,5 +1,8 @@
 Arsenal::Application.routes.draw do
 
+  post "staffs/regist"
+  get  "staffs/regist_confirm"
+
   # /staffs/sign_in でパスワード入力画面に遷移させない
   devise_scope :staff do
     get "/staffs/sign_in", :to => "welcome#index"
@@ -18,6 +21,11 @@ Arsenal::Application.routes.draw do
 
   root "welcome#index"
   get "home", to: "home#index", as: "staff_root"
+
+  # 未登録社員一括表示用api
+  scope :api do
+    get  "/staffs(.:format)" => "staffs#show"
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
