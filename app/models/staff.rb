@@ -7,6 +7,7 @@ class Staff < ActiveRecord::Base
 
   @@yammer = Yammer::Client.new(:access_token  => Constants.Token)
 
+# yammer認証後にユーザー登録を行う
 def self.find_for_yammer_oauth(auth)
   	staff = Staff.where(yammer_id: auth.uid, email: auth.info.email).first
   	unless staff
@@ -61,4 +62,29 @@ def self.find_for_yammer_oauth(auth)
 
     return unregistered_staffs
   end
+
+  # yammerのidに紐づく社員情報を取得syutoku
+  def self.find_by_yammer_id(yammer_id)
+    staff_info = @@yammer.get_user(yammer_id)
+    return staff_info.body
+  end
+
+  # 社員情報を登録
+  def self.regist(data)
+    staff = Staff.create(
+      yammer_id:      data[:id],
+      full_name:      data[:full_name],
+      first_name:     data[:first_name],
+      last_name:      data[:last_name],
+      nick_name:      data[:name],
+      email:          data[:contact][:email_addresses][0][:address],
+      mugshot_url:    data[:mugshot_url],
+      joined:         data[:activated_at],
+      token:          Constants.Token,
+      password:       Devise.friendly_token[0,20]
+      )
+
+    return staff
+  end
+
 end

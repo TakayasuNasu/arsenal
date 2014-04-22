@@ -2,16 +2,24 @@
 <p>Find me in app/views/staffs/regist_confirm.html.erb</p>
 
   <div ng-controller="StaffsCtrl">
-  	<form method="post" name="staffInfo" action="regist">
-  		<span ng-show="allChecked">全て解除</span>
-  		<span ng-hide="allChecked">全て選択</span>
-  		<input type="checkbox" ng-model="allChecked" name="allChacke" onChange="checkAll()">
-  		<input type="submit" value="登録" name="submit" disabled="true">
+
+  	<form method="post" name="staffInfo" id="form">
+  		<span ng-show="staffChecked">全て解除</span>
+  		<span ng-hide= "staffChecked">全て選択</span>
+  		<input type="checkbox" ng-model="staffChecked" name="allChacke" ng-change="checkAll()">
+  		<input  type="submit"
+  				value="登録"
+  				name="regist"
+  				disabled="true">
   		<ul>
 	      <li ng-repeat=" staff in staffs ">
 	      	<p>
-	      		<input type="checkbox" value="{{staff.id}}" name="info[]" ng-checked="allChecked" onChange="checkInfo()">
-	        	{{ staff.full_name }}
+	      		<input  type="checkbox"
+	      				value="{{staff.id}}"
+	      				name="yammerId[]"
+	      				ng-checked="staffChecked"
+	      				onChange="checkInfo()">
+	        			{{ staff.full_name }}
 	    	</p>
 	      </li>
 	    </ul>

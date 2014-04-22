@@ -41,6 +41,12 @@ production:
   <<: *defaults
 ```
 
+- コンソールから管理者を追加(※`rake db:migrate` 実行済み)
+```sh
+rails c
+AdminUser.create(:email => "yourEmail@test.com", :password => "yourPassword", :password_confirmation => "yourPassword")
+```
+
 #### License
 
 - Copyright (c) 2014 kubota nasu etc
