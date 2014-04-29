@@ -1,0 +1,56 @@
+@import url(http://fonts.googleapis.com/css?family=Josefin+Sans);
+@import url(http://fonts.googleapis.com/css?family=Quicksand);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
+
+// margin
+$base-margin: 50px;
+
+// font-size
+$base-font-size: 14px;
+$larg-font-size: 12ex;
+
+// height width
+$base-img-height: 350px;
+$base-img-width: 455px;
+$base-img-max-height: 350px;
+$base-img-max-width: 455px;
+
+// colot
+$base-color: #00ffff;
+$derk-color: darken( $base-color, 15% );
+
+body {
+  font-family: "Hiragino Maru Gothic ProN", Monaco, Meiryo, sans-serif;
+
+  h1, h2 {
+    font-family: 'Josefin Sans', 'Quicksand',"Hiragino Maru Gothic ProN", Monaco, Meiryo, sans-serif;
+  }
+
+  #masthead {
+    background-color: #396B9A;
+    height: 70px;
+    position: relative;
+    overflow-x: hidden;
+    z-index: 3500;
+
+    #masthead-inner-container {
+      position: relative;
+      h1 a {
+        color: white;
+        text-decoration: none;
+        font-family: 'Open Sans';
+      }
+    }
+  }
+
+  #home-index-container {
+    li {
+      list-style-type: none;
+    }
+  }
+
+  .angular-google-map-container {
+    height: 500px;
+  }
+
+}

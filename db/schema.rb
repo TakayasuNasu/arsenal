@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401143542) do
+ActiveRecord::Schema.define(version: 20140429011545) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",               default: "", null: false
@@ -27,6 +27,33 @@ ActiveRecord::Schema.define(version: 20140401143542) do
   end
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+
+  create_table "departments", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "loan_companies", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "phone_number"
+    t.string   "pic"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "prefectures", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "staffs", force: true do |t|
     t.integer  "yammer_id",           default: 0,     null: false

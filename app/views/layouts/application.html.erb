@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html ng-app ="Arsenal">
+
 <head>
   <title>Arsenal</title>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+
+  <script src='http://maps.googleapis.com/maps/api/js?sensor=false'></script>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
+
+<header>
+  <div class="row">
+    <div class="col-xs-12" id="masthead">
+      <div class="row">
+        <div class="col-md-offset-1 col-xs-offset-4" id="masthead-inner-container">
+          <h1><a href="https://www.yammer.com/b-tm.co.jp/">b-tm.co.jp</a></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
 <div id="staff-info">
   <% if staff_signed_in? %>
     <%= current_staff.full_name %>
@@ -15,7 +33,10 @@
     <%= link_to "Sign in with yammer", staff_omniauth_authorize_path(:yammer) %>
   <% end %>
 </div>
+
 <%= yield %>
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 </body>
 </html>

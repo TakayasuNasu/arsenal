@@ -1,3 +1,23 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<%= debug(@user) %>
+<div ng-controller="StaffAllCtrl">
+
+	<h2>社員一覧</h2>
+	<input ng-model="query">
+
+	<div id="home-index-container">
+		<ul>
+			<li ng-repeat=" staff in staffs  | filter:query ">
+				<img ng-src="{{staff.mugshot_url}}"/>&nbsp;
+				{{staff.full_name}}&nbsp;
+				{{staff.email}}&nbsp;
+			</li>
+		</ul>
+	</div>
+
+	<div>
+		<google-map center="map.center"
+				    zoom="map.zoom"
+				    draggable="true">
+		</google-map>
+	</div>
+
+</div>

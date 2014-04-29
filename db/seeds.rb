@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require "csv"
+# mst_japans
+CSV.foreach('db/mst_japans.csv') do |row|
+  Prefecture.create(:name => row[0])
+end
