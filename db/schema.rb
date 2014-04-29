@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429005357) do
+ActiveRecord::Schema.define(version: 20140429011545) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",               default: "", null: false
@@ -45,6 +45,12 @@ ActiveRecord::Schema.define(version: 20140429005357) do
     t.string   "address"
     t.string   "phone_number"
     t.string   "pic"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "prefectures", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

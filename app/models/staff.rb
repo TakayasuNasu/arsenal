@@ -10,6 +10,7 @@ class Staff < ActiveRecord::Base
   belongs_to :group
   belongs_to :department
   belongs_to :loan_company
+  belongs_to :prefecture
 
 # yammer認証後にユーザー登録を行う
 def self.find_for_yammer_oauth(auth)

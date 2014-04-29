@@ -18,4 +18,6 @@
 //= require angular-animate
 //= require angular-ui-bootstrap
 //= require app
+//= require underscore-min
+//= require angular-google-maps
 //= require_tree .

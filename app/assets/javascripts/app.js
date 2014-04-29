@@ -1,4 +1,5 @@
 window.App = angular.module('Arsenal', ['ngResource',
 										'ngAnimate',
-										'ui.bootstrap'
+										'ui.bootstrap',
+										'google-maps'
 										]);
