@@ -1,6 +1,6 @@
 class StaffsController < ApplicationController
 
-	before_filter :authenticate_staff!
+	before_filter :authenticate_admin_user!
 
 	skip_before_filter :verify_authenticity_token ,:only=>[:regist]
 
@@ -20,4 +20,5 @@ class StaffsController < ApplicationController
   	all_staff = Staff.get_all_staff
   	render json: Staff.get_unregistered_staff(all_staff)
   end
+
 end

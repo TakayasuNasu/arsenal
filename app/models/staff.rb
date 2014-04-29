@@ -7,6 +7,10 @@ class Staff < ActiveRecord::Base
 
   @@yammer = Yammer::Client.new(:access_token  => Constants.Token)
 
+  belongs_to :group
+  belongs_to :department
+  belongs_to :loan_company
+
 # yammer認証後にユーザー登録を行う
 def self.find_for_yammer_oauth(auth)
   	staff = Staff.where(yammer_id: auth.uid, email: auth.info.email).first

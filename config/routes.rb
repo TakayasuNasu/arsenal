@@ -25,6 +25,7 @@ Arsenal::Application.routes.draw do
   # 未登録社員一括表示用api
   scope :api do
     get  "/staffs(.:format)" => "staffs#show"
+    get  "/all(.:format)" => "home#all"
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

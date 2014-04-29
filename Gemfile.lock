@@ -26,6 +26,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.6)
+    angular-ui-bootstrap-rails (0.10.0)
     angularjs-rails (1.2.15)
     angularjs-rails-resource (0.2.5)
     arel (4.0.2)
@@ -198,6 +199,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angular-ui-bootstrap-rails
   angularjs-rails
   angularjs-rails-resource (~> 0.2.3)
   coffee-rails (~> 4.0.0)
