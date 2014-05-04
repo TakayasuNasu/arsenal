@@ -16,7 +16,14 @@
 	<div>
 		<google-map center="map.center"
 				    zoom="map.zoom"
-				    draggable="true">
+				    draggable="true"
+				    mark-click="false">
+				    <markers>
+				    	<marker ng-repeat="marker in myMarkers"
+				    	coords="marker"
+				    	icon="marker.mugshot_url">
+				    	</marker>
+				    </markers>
 		</google-map>
 	</div>
 
