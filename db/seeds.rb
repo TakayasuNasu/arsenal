@@ -11,3 +11,8 @@ require "csv"
 CSV.foreach('db/mst_japans.csv') do |row|
   Prefecture.create(:name => row[0])
 end
+
+# mst_group.csv
+CSV.foreach('db/mst_group.csv') do |row|
+  Group.create(:name => row[0])
+end

@@ -1,23 +1,86 @@
 <div ng-controller="StaffAllCtrl">
 
-	<h2>社員一覧</h2>
-	<input ng-model="query">
+	<div class="container">
 
-	<div id="home-index-container">
-		<ul>
-			<li ng-repeat=" staff in staffs  | filter:query ">
-				<img ng-src="{{staff.mugshot_url}}"/>&nbsp;
-				{{staff.full_name}}&nbsp;
-				{{staff.email}}&nbsp;
-			</li>
-		</ul>
-	</div>
+		<div class="row">
+			<h2>社員一覧</h2>
+		</div>
 
-	<div>
-		<google-map center="map.center"
+		<div class="row">
+			<input ng-model="query" class="col-xs-12 col-md-3">
+		</div>
+
+		<hr>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="col-xs-1 col-md-1">
+
+					</th>
+					<th class="col-xs-2 col-md-2">
+						社員名
+					</th>
+					<th class="hidden-xs col-md-2">
+						email
+					</th>
+					<th class="hidden-xs col-md-1">
+						所属
+					</th>
+					<th class="hidden-xs col-md-1">
+						班
+					</th>
+					<th class="hidden-xs col-md-2">
+						出身
+					</th>
+					<th class="col-xs-3 col-md-3">
+						ひとこと
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat=" staff in staffs | filter:query ">
+					<td class="col-xs-1 col-md-1">
+						<img ng-src="{{staff.mugshot_url}}"/>
+					</td>
+					<td class="col-xs-2 col-md-2">
+						{{staff.full_name}}
+					</td>
+					<td class="hidden-xs col-md-2">
+						{{staff.email}}
+					</td>
+					<td class="hidden-xs col-md-2">
+						{{staff.department.name}}
+					</td>
+					<td class="hidden-xs col-md-1">
+						{{staff.group.name}}
+					</td>
+					<td class="hidden-xs col-md-2">
+						{{staff.prefecture.name}}
+					</td>
+					<td class="col-xs-3 col-md-3">
+						{{staff.tweets}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="row">
+			<google-map center="map.center"
 				    zoom="map.zoom"
-				    draggable="true">
-		</google-map>
+				    draggable="true"
+				    mark-click="false">
+				    <markers>
+				    	<marker ng-repeat="marker in myMarkers | filter:query"
+				    	coords="marker"
+				    	click="marker.onClicked"
+				    	icon="marker.mugshot_url"
+				    	options="marker.options">
+				    	</marker>
+				    </markers>
+			</google-map>
+		</div>
+
 	</div>
 
 </div>

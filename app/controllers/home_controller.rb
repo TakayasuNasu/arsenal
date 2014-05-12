@@ -7,7 +7,14 @@ class HomeController < ApplicationController
 
 
   def all
-    render json: Staff.order("group_id, nick_name")
+    render json: Staff.all.order("group_id, nick_name").to_json(
+    	:include => {
+    		:loan_company => {:except => [:created_at, :updated_at]},
+        :prefecture => {:except => [:created_at, :updated_at]},
+        :department => {:except => [:created_at, :updated_at]},
+    		:group => {:except => [:created_at, :updated_at]}
+        },
+    	:except => [:created_at, :updated_at])
   end
 
 end
