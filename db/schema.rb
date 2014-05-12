@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20140429011545) do
     t.string   "nick_name",           default: "",    null: false
     t.string   "email",               default: "",    null: false
     t.string   "encrypted_password",  default: "",    null: false
-    t.string   "twwite"
+    t.string   "tweets"
     t.string   "mugshot_url",         default: "",    null: false
     t.integer  "prefecture_id"
     t.integer  "group_id"

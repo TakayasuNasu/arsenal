@@ -12,7 +12,7 @@ class DeviseCreateStaffs < ActiveRecord::Migration
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
-      t.string  :twwite
+      t.string  :tweets
       t.string  :mugshot_url,       null: false, default: ""
       t.integer :prefecture_id
       t.integer :group_id
