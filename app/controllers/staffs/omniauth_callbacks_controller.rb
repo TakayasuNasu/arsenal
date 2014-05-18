@@ -1,6 +1,14 @@
 class Staffs::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 	def yammer
-    	@staff = Staff.find_for_yammer_oauth(request.env["omniauth.auth"])
+		auth = request.env["omniauth.auth"]
+
+		# 指定されたNetwork以外はトップにredirectさせる
+		unless Constants.NetworkId == auth.extra.raw_info.network_id
+			redirect_to root_path
+			return
+		end
+
+    	@staff = Staff.find_for_yammer_oauth(auth)
 
 	    if @staff.persisted?
 	    	sign_in_and_redirect @staff, :event => :authentication
