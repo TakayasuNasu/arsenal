@@ -16,7 +16,7 @@ Arsenal
 
 #### Versions
 
-- 0.0.7 [2014/05/12] 出向先をgooglemapに表示
+- 0.0.7 [2014/05/12] 出向先をgooglemapに表示、一括登録表示時にプログレスバーを表示
 - 0.0.6 [2014/04/29] googlemap、migrationファイル追加
 - 0.0.5 [2014/04/20] 社員一括登録機能
 - 0.0.4 [2014/04/05] 設定ファイル外部化
@@ -30,7 +30,7 @@ Arsenal
 defaults: &defaults
   ClientId: "YourClientID"
   ClientSecret: "YourClientSecret"
-  Network_id: "YourNetworkID"
+  Network_id: 012345
   Token: "YourToken"
 
 development:
