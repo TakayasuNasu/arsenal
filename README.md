@@ -30,8 +30,8 @@ Arsenal
 defaults: &defaults
   ClientId: "YourClientID"
   ClientSecret: "YourClientSecret"
-  network_id: "YourNetworkID"
-  token: "YourToken"
+  Network_id: "YourNetworkID"
+  Token: "YourToken"
 
 development:
   <<: *defaults
