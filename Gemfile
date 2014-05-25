@@ -49,6 +49,8 @@ gem 'angularjs-rails'
 gem 'angularjs-rails-resource', '~> 0.2.3'
 gem 'angular-ui-bootstrap-rails'
 
+gem 'angular-ui-calendar-rails', '~> 0.8.1'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

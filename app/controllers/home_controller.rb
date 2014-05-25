@@ -17,4 +17,8 @@ class HomeController < ApplicationController
     	:except => [:created_at, :updated_at])
   end
 
+  def event_all
+    render json: Event.all
+  end
+
 end

@@ -3,6 +3,8 @@ Arsenal::Application.routes.draw do
   post "staffs/regist"
   get  "staffs/regist_confirm"
 
+  post "events/update"
+
   # /staffs/sign_in でパスワード入力画面に遷移させない
   devise_scope :staff do
     get "/staffs/sign_in", :to => "welcome#index"
@@ -26,6 +28,7 @@ Arsenal::Application.routes.draw do
   scope :api do
     get  "/staffs(.:format)" => "staffs#show"
     get  "/all(.:format)" => "home#all"
+    get  "/event_all(.:format)" => "home#event_all"
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

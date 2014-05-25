@@ -14,24 +14,24 @@ class Staff < ActiveRecord::Base
 
 # yammer認証後にユーザー登録を行う
 def self.find_for_yammer_oauth(auth)
-  	staff = Staff.where(yammer_id: auth.uid, email: auth.info.email).first
-  	unless staff
-  		staff = Staff.create(
-  			yammer_id:     	auth.uid,
-  			full_name: 		auth.info.name,
-  			first_name:     auth.extra.raw_info.first_name,
-  			last_name:    	auth.extra.raw_info.last_name,
-  			nick_name:    	auth.info.nickname,
-  			email: 			auth.info.email,
-  			mugshot_url:	auth.info.image,
-  			joined: 		auth.extra.raw_info.activated_at,
-  			email:    		auth.info.email,
-  			token:    		auth.credentials.token,
-  			password: 		Devise.friendly_token[0,20]
-  			)
-  	end
+    staff = Staff.where(yammer_id: auth.uid, email: auth.info.email).first
+    unless staff
+      staff = Staff.create(
+        yammer_id:      auth.uid,
+        full_name:    auth.info.name,
+        first_name:     auth.extra.raw_info.first_name,
+        last_name:      auth.extra.raw_info.last_name,
+        nick_name:      auth.info.nickname,
+        email:      auth.info.email,
+        mugshot_url:  auth.info.image,
+        joined:     auth.extra.raw_info.activated_at,
+        email:        auth.info.email,
+        token:        auth.credentials.token,
+        password:     Devise.friendly_token[0,20]
+        )
+    end
 
-  	return staff
+    return staff
   end
 
   # 全社員情報を取得
@@ -40,6 +40,7 @@ def self.find_for_yammer_oauth(auth)
     count = 1
     while true
       staff = @@yammer.all_users page: count
+
       if staff.body.empty?
         break
       end

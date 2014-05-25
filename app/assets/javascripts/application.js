@@ -17,6 +17,7 @@
 //= require angular-resource
 //= require angular-animate
 //= require angular-ui-bootstrap
+//= require angular-ui-calendar
 //= require app
 //= require underscore-min
 //= require angular-google-maps
