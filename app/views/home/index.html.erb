@@ -86,9 +86,47 @@
 </div>
 
 <div class="container" ng-controller="CalendarCtrl">
-	<div class="calendar" ng-model="eventSources" calendar="myCalendar" config="uiConfig.calendar" ui-calendar="uiConfig.calendar" style="width:auto;"></div>
+	<div class="calendar" ng-model="eventSources" calendar="myCalendar" config="uiConfig.calendar" ui-calendar="uiConfig.calendar" style="width:auto;">
+	</div>
 
-	<script type="text/ng-template" id="eventRegist.html">
+	<script type="text/ng-template" id="eventCreate.html">
+		<div class="modal-header">
+			<button type="button" class="close" ng-click="$dismiss()" aria-hidden="true">×</button>
+			<h4>イベント登録</h4>
+		</div>
+
+		<div class="modal-body">
+			<div>イベント名</div>
+			<div>
+				<input type="text" ng-model="newEvent.name">
+			</div>
+
+			<div>イベント内容</div>
+			<div>
+				<textarea ng-model="newEvent.description"></textarea>
+			</div>
+
+			<div>場所</div>
+			<div>
+				<input type="text" ng-model="newEvent.location">
+			</div>
+
+			<div>開催日</div>
+			<div>
+				<input type="text" datepicker-popup ng-model="eventDay" ng-required="true">
+			</div>
+			<div ng-model="eventDay">
+			<timepicker></timepicker>
+
+		</div>
+
+		<div class="modal-footer">
+			<button class="btn btn-success" ng-click="create()">登録</button>
+			<button class="btn btn-danger" ng-click="$close()">キャンセル</button>
+		</div>
+	</script>
+
+	<script type="text/ng-template" id="eventUpdate.html">
 		<div class="modal-header">
 			<button type="button" class="close" ng-click="$dismiss()" aria-hidden="true">×</button>
 			<h4>「{{event.title}}」編集</h4>
@@ -102,7 +140,12 @@
 
 			<div>イベント内容</div>
 			<div>
-				<input type="text" ng-model="event.description">
+				<textarea ng-model="event.description"></textarea>
+			</div>
+
+			<div>場所</div>
+			<div>
+				<input type="text" ng-model="event.location">
 			</div>
 
 			<div>開催日</div>
@@ -120,6 +163,63 @@
 			<button class="btn btn-success" ng-click="update()">編集</button>
 			<button class="btn btn-danger" ng-click="$close()">キャンセル</button>
 		</div>
+	</script>
+
+	<script type="text/ng-template" id="eventRegist.html">
+		<div class="modal-header">
+			<button type="button" class="close" ng-click="$dismiss()" aria-hidden="true">×</button>
+			<h4>「{{event.title}}」参加/不参加</h4>
+		</div>
+
+		<div class="modal-body">
+			<div>イベント内容</div>
+			<div>{{event.description}}</div>
+
+			<div>場所</div>
+			<div>{{event.location}}</div>
+
+			<div>時間</div>
+			<div>{{event.start}}</div>
+
+			<select class="form-control"
+				ng-change="change(participations_id)"
+				ng-model="participations_id"
+				ng-options="p.id as p.name for p in participations">
+			</select>
+
+		</div>
+
+		<div class="modal-footer">
+
+			<span ng-show="current_flag">
+				<button class="btn btn-success" ng-click="updateRegister()">編集</button>
+			</span>
+			<span ng-hide="current_flag">
+				<button class="btn btn-success" ng-click="regist()">登録</button>
+			</span>
+
+			<button class="btn btn-danger" ng-click="$close()">キャンセル</button>
+
+		</div>
+
+		<br>
+		<table class="table">
+			<tbody>
+				<tr ng-repeat=" registrant in registrants ">
+					<td>
+						<img ng-src="{{registrant.staff.mugshot_url}}"/>
+					</td>
+					<td>
+						{{registrant.staff.full_name}}
+					</td>
+					<td>
+						{{registrant.participation.name}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+
 	</script>
 </div>
 
