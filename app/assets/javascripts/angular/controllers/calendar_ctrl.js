@@ -42,12 +42,15 @@ app.controller('CalendarCtrl', [
 		datepickerPopupConfig.closeText = "閉じる";
 		timepickerConfig.showMeridian = false;
 
+		// イベント登録状態初期化
 		$scope.participations_id = 1;
 
+		// ログインしたユーザーのidを取得
 		StaffInfo.query().$promise.then(function(current_staff) {
 			$scope.currnt_staff_id = current_staff.id;
 		});
 
+		// eventsテーブルからイベント情報を取得
 		var eventList = [];
 		var eventObjct = {};
 		Event.query().$promise.then(function(events) {
@@ -63,16 +66,20 @@ app.controller('CalendarCtrl', [
 			});
 		});
 
+		// イベントをクリックでモーダルを開く(カレンダーのconfigより先にする必要あり)
 		$scope.alertOnEventClick = function( event, allDay, jsEvent, view ){
 	        $scope.open(event);
 	    };
 
+	    // カレンダークリックでモーダルを開く
 	    $scope.alertOnDayClick = function( date, allDay, jsEvent, view ) {
 	    	$scope.openCreateEventWindow(date);
 	    }
 
+	    // カレンダーに表示用のイベント情報を設定
 		$scope.eventSources = [eventList];
 
+		// カレンダーの設定
 		$scope.uiConfig = {};
 		$scope.uiConfig.calendar = {
 			height: 450,
@@ -98,16 +105,19 @@ app.controller('CalendarCtrl', [
 			$scope.event = registeredEvent;
 			$scope.participations = Participation.query();
 			if ($scope.event.staff_id == $scope.currnt_staff_id) {
+				// ログインユーザーが作成したイベントの場合は編集
 				$modal.open({templateUrl:"eventUpdate.html", scope: $scope});
 			} else {
+				// ログインユーザーが作成していないので、そのイベントの参加/不参加
 				$scope.registrants = Registrant.query({id: $scope.event.id});
+				// イベント参加/不参加登録者情報を取得してログインユーザーが登録済みか判定
 				isCurrenStaff($scope.registrants);
 				$modal.open({templateUrl:"eventRegist.html", scope: $scope});
 			}
 		}
 
+		// イベント作成
 		$scope.create = function() {
-			$log.log($scope);
 			$http.post('/arsenal/events/create',
 				{'staff_id': $scope.currnt_staff_id,
 				 'name': $scope.newEvent.name,
@@ -121,6 +131,7 @@ app.controller('CalendarCtrl', [
 				});
 		}
 
+		// イベント編集
 		$scope.update = function() {
 			$http.post('/arsenal/events/update',
 				{'id': $scope.event.id,
@@ -135,6 +146,7 @@ app.controller('CalendarCtrl', [
 				});
 		}
 
+		// イベント参加/不参加登録
 		$scope.regist = function() {
 			$http.post('/arsenal/event_registers/create',
 				{'event_id': $scope.event.id,
@@ -147,6 +159,7 @@ app.controller('CalendarCtrl', [
 				});
 		}
 
+		// イベント参加/不参加登録変更
 		$scope.updateRegister = function(){
 			$http.post('/arsenal/event_registers/update',
 				{'event_id': $scope.event.id,
@@ -159,10 +172,12 @@ app.controller('CalendarCtrl', [
 				});
 		}
 
+		// selectboxで変更があった場合に対応
 		$scope.change = function(id) {
 			$scope.participations_id = id;
 		}
 
+		// 既に参加/不参加登録済みか判定
 		isCurrenStaff = function(registrants) {
 			$scope.current_flag = false;
 			registrants.$promise.then(function(registantList) {
