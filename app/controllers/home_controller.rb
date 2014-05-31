@@ -17,4 +17,25 @@ class HomeController < ApplicationController
     	:except => [:created_at, :updated_at])
   end
 
+  def event_all
+    render json: Event.all
+  end
+
+  def participation_all
+    render json: Participation.all
+  end
+
+  def current_info
+    render json: current_staff.to_json
+  end
+
+  def registrant
+    render json: EventRegister.where(event_id: params[:event_id]).to_json(
+      :include => {
+        :staff => {:except => [:created_at, :updated_at]},
+        :participation => {:except => [:created_at, :updated_at]}
+      },
+    :except => [:created_at, :updated_at])
+  end
+
 end

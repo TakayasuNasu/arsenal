@@ -2,6 +2,14 @@
 
   <div class="container">
 
+      <div class="row">
+        <h2>未登録社員一覧</h2>
+      </div>
+
+      <div class="row">
+        <input ng-model="query" class="col-xs-12 col-md-3">
+      </div>
+
       <form role="form" method="post" name="staffInfo" id="form">
 
         <span ng-show="staffChecked">全て解除</span>
@@ -16,7 +24,7 @@
         <hr>
 
         <ul class="list-unstyled">
-          <li ng-repeat=" staff in staffs ">
+          <li ng-repeat=" staff in staffs | filter:query ">
 
             <input  type="checkbox"
                 value="{{staff.id}}"
