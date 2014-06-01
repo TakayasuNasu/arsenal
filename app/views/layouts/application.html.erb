@@ -26,16 +26,9 @@
   </div>
 </header>
 
-<div id="staff-info">
-  <% if staff_signed_in? %>
-    <%= current_staff.full_name %>
-    [<%= link_to 'Sign out', destroy_staff_session_path, method: :delete  %>]
-  <% else %>
-    <%= link_to "Sign in with yammer", staff_omniauth_authorize_path(:yammer) %>
-  <% end %>
-</div>
-
 <%= yield %>
+
+<a href="#top" class="scroll">トップへ</a>
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.2.10/angular-locale_ja-jp.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.js"></script>

@@ -1,0 +1,15 @@
+<div id="googlemap" class="row">
+	<google-map center="map.center"
+		    zoom="map.zoom"
+		    draggable="true"
+		    mark-click="false">
+		    <markers>
+		    	<marker ng-repeat="marker in myMarkers | filter:query"
+		    	coords="marker"
+		    	click="marker.onClicked"
+		    	icon="marker.mugshot_url"
+		    	options="marker.options">
+		    	</marker>
+		    </markers>
+	</google-map>
+</div>

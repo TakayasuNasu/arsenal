@@ -1,0 +1,56 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th class="col-xs-1 col-md-1">
+
+			</th>
+			<th class="col-xs-2 col-md-2">
+				社員名
+			</th>
+			<th class="hidden-xs col-md-2">
+				email
+			</th>
+			<th class="hidden-xs col-md-1">
+				所属
+			</th>
+			<th class="hidden-xs col-md-1">
+				班
+			</th>
+			<th class="hidden-xs col-md-2">
+				出身
+			</th>
+			<th class="col-xs-3 col-md-3">
+				ひとこと
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat=" staff in staffs | filter:query ">
+			<td class="col-xs-1 col-md-1">
+				<img ng-src="{{staff.mugshot_url}}"/>
+			</td>
+			<td class="col-xs-2 col-md-2">
+				<a href ng-click="open(staff.id)">
+					{{staff.full_name}}
+				</a>
+			</td>
+			<td class="hidden-xs col-md-2">
+				<a ng-href="mailto:{{staff.email}}"/>
+					{{staff.email}}
+				</a>
+			</td>
+			<td class="hidden-xs col-md-2">
+				{{staff.department.name}}
+			</td>
+			<td class="hidden-xs col-md-1">
+				{{staff.group.name}}
+			</td>
+			<td class="hidden-xs col-md-2">
+				{{staff.prefecture.name}}
+			</td>
+			<td class="col-xs-3 col-md-3">
+				{{staff.tweets}}
+			</td>
+		</tr>
+	</tbody>
+</table>
