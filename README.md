@@ -16,6 +16,7 @@ Arsenal
 
 #### Versions
 
+- 0.1.0 [2014/06/01] 自分の社員情報を更新できる機能追加
 - 0.0.9 [2014/05/31] カレンダー機能を追加
 - 0.0.7 [2014/05/12] 出向先をgooglemapに表示、一括登録表示時にプログレスバーを表示
 - 0.0.6 [2014/04/29] googlemap、migrationファイル追加
@@ -31,7 +32,7 @@ Arsenal
 defaults: &defaults
   ClientId: "YourClientID"
   ClientSecret: "YourClientSecret"
-  Network_id: 012345
+  NetworkId: 012345
   Token: "YourToken"
 
 development:
