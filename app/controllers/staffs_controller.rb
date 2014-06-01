@@ -1,8 +1,17 @@
 class StaffsController < ApplicationController
 
-	before_filter :authenticate_admin_user!
+	before_filter :authenticate_admin_user! ,:only=>[:regist_confirm]
 
-	skip_before_filter :verify_authenticity_token ,:only=>[:regist]
+  before_action :set_staffs, only: [:update]
+
+  def update
+    if @staffs.update(staff_params)
+      logger.info("更新")
+    else
+      logger.info()
+    end
+    render :nothing => true
+  end
 
   def regist
   	staffs = params[:yammerId]
@@ -20,5 +29,15 @@ class StaffsController < ApplicationController
   	all_staff = Staff.get_all_staff
   	render json: Staff.get_unregistered_staff(all_staff)
   end
+
+  private
+
+    def staff_params
+      params.require(:staff).permit(:id, :department_id, :group_id, :prefecture_id, :loan_company_id, :tweets, :yammerId)
+    end
+
+    def set_staffs
+      @staffs = Staff.find(params[:id])
+    end
 
 end

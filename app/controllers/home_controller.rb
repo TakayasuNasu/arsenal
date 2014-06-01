@@ -38,4 +38,20 @@ class HomeController < ApplicationController
     :except => [:created_at, :updated_at])
   end
 
+  def get_loan_company
+    render json: LoanCompany.all
+  end
+
+  def get_group
+    render json: Group.all
+  end
+
+  def get_department
+    render json: Department.all
+  end
+
+  def get_prefecture
+    render json: Prefecture.all
+  end
+
 end

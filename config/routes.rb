@@ -1,6 +1,7 @@
 Arsenal::Application.routes.draw do
 
   post "staffs/regist"
+  post "staffs/update"
   get  "staffs/regist_confirm"
 
   post "events/create"
@@ -37,6 +38,10 @@ Arsenal::Application.routes.draw do
     get  "/current_info(.:format)" => "home#current_info"
     get  "/participation_all(.:format)" => "home#participation_all"
     get  "/registrant/:event_id(.:format)" => "home#registrant"
+    get  "/loan_company(.:format)" => "home#get_loan_company"
+    get  "/group(.:format)" => "home#get_group"
+    get  "/department(.:format)" => "home#get_department"
+    get  "/prefecture(.:format)" => "home#get_prefecture"
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

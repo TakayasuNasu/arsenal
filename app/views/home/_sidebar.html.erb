@@ -1,0 +1,22 @@
+<br>
+<div class="row">
+	<div class="col-md-2">
+	<img ng-src="{{currnt_staff.mugshot_url}}"/>
+	</div>
+
+	<div class="col-md-8 col-md-offset-2">
+		<br>
+		{{currnt_staff.full_name}}
+	</div>
+</div>
+
+<div id="staff-info">
+  <% if staff_signed_in? %>
+    [<%= link_to 'Sign out', destroy_staff_session_path, method: :delete  %>]
+  <% end %>
+</div>
+
+<ul class="list-unstyled">
+	<li><a href="#googlemap" class="scroll">map</a></li>
+	<li><a href="#calendar" class="scroll">カレンダー</a></li>
+</ul>

@@ -1,0 +1,46 @@
+<script type="text/ng-template" id="update.html">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="$dismiss()" aria-hidden="true">×</button>
+		<img ng-src="{{registered_staff.mugshot_url}}"/>
+		<h4>{{registered_staff.name}}</h4>
+	</div>
+
+	<div class="modal-body">
+
+		<div>所属</div>
+		<select class="form-control"
+			ng-model="registered_staff.department_id"
+			ng-options="d.id as d.name for d in departments">
+		</select>
+
+		<div>班</div>
+		<select class="form-control"
+			ng-model="registered_staff.group_id"
+			ng-options="g.id as g.name for g in groups">
+		</select>
+
+		<div>出身地</div>
+		<select class="form-control"
+			ng-model="registered_staff.prefecture_id"
+			ng-options="p.id as p.name for p in prefectures">
+		</select>
+
+		<div>出向先</div>
+		<select class="form-control"
+			ng-model="registered_staff.loan_company_id"
+			ng-options="l.id as l.name for l in loan_companies">
+		</select>
+
+		<div>ひとこと</div>
+		<div>
+			<textarea ng-model="registered_staff.tweets"></textarea>
+		</div>
+
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-success" ng-click="update()">編集</button>
+		<button class="btn btn-danger" ng-click="$close()">キャンセル</button>
+	</div>
+
+</script>

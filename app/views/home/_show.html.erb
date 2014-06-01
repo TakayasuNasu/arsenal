@@ -1,0 +1,27 @@
+<script type="text/ng-template" id="show.html">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="$dismiss()" aria-hidden="true">×</button>
+		<img ng-src="{{registered_staff.mugshot_url}}"/>
+		<h4>{{registered_staff.name}}</h4>
+	</div>
+
+	<div class="modal-body">
+		<div>所属</div>
+		<div>{{registered_staff.department_name}}</div>
+
+		<div>班</div>
+		<div>{{registered_staff.group_name}}</div>
+
+		<div>出身地</div>
+		<div>{{registered_staff.prefecture_name}}</div>
+
+		<div>現場</div>
+		<div>{{registered_staff.loan_company_name}}</div>
+
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-danger" ng-click="$close()">閉じる</button>
+	</div>
+
+</script>

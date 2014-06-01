@@ -1,0 +1,39 @@
+<script type="text/ng-template" id="eventCreate.html">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="$dismiss()" aria-hidden="true">×</button>
+		<h4>イベント登録</h4>
+	</div>
+
+	<form name="eventInfo">
+		<div class="modal-body">
+			<div>イベント名</div>
+			<div>
+				<input type="text" ng-model="newEvent.name" required>
+			</div>
+
+			<div>イベント内容</div>
+			<div>
+				<textarea ng-model="newEvent.description" required></textarea>
+			</div>
+
+			<div>場所</div>
+			<div>
+				<input type="text" ng-model="newEvent.location" required>
+			</div>
+
+			<div>開催日</div>
+			<div>
+				{{eventDay | date:'yyyy-MM-dd'}}
+			</div>
+			<div ng-model="eventDay">
+			<timepicker></timepicker>
+
+		</div>
+
+		<div class="modal-footer">
+			<button class="btn btn-success" ng-click="create()" ng-disabled="eventInfo.$invalid">登録</button>
+			<button class="btn btn-danger" ng-click="$close()">キャンセル</button>
+		</div>
+	</form>
+
+</script>
