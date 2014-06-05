@@ -6,17 +6,43 @@
 	</div>
 
 	<div class="modal-body">
-		<div>所属</div>
-		<div>{{registered_staff.department_name}}</div>
 
-		<div>班</div>
-		<div>{{registered_staff.group_name}}</div>
-
-		<div>出身地</div>
-		<div>{{registered_staff.prefecture_name}}</div>
-
-		<div>現場</div>
-		<div>{{registered_staff.loan_company_name}}</div>
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<td class="col-xs-2 col-md-2">
+						<strong>所属</strong>
+					</td>
+					<td class="col-xs-10 col-md-10 text-center">
+						{{registered_staff.department_name}}
+					</td>
+				</tr>
+				<tr>
+					<td class="col-xs-2 col-md-2">
+						<strong>班</strong>
+					</td>
+					<td class="col-xs-10 col-md-10 text-center">
+						{{registered_staff.group_name}}
+					</td>
+				</tr>
+				<tr>
+					<td class="col-xs-2 col-md-2">
+						<strong>出身地</strong>
+					</td>
+					<td class="col-xs-10 col-md-10 text-center">
+						{{registered_staff.prefecture_name}}
+					</td>
+				</tr>
+				<tr>
+					<td class="col-xs-2 col-md-2">
+						<strong>現場</strong>
+					</td>
+					<td class="col-xs-10 col-md-10 text-center">
+						{{registered_staff.loan_company_name}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
 
 	</div>
 
