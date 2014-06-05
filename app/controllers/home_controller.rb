@@ -18,7 +18,12 @@ class HomeController < ApplicationController
   end
 
   def event_all
-    render json: Event.all
+    render json: Event.all.to_json(
+      :include => {
+        :staff => {:except => [:created_at, :updated_at]}
+      },
+      :except => [:created_at, :updated_at]
+    )
   end
 
   def participation_all

@@ -61,6 +61,7 @@ app.controller('CalendarCtrl', [
 				eventObjct.location = event.location;
 				eventObjct.description = event.description;
 				eventObjct.start = new Date(event.date);
+				eventObjct.staff_name = event.staff.full_name;
 				eventList.push(eventObjct);
 				eventObjct = {};
 			});
@@ -104,12 +105,13 @@ app.controller('CalendarCtrl', [
 		$scope.open = function(registeredEvent) {
 			$scope.event = registeredEvent;
 			$scope.participations = Participation.query();
+			// そのイベントの参加/不参加を取得
+			$scope.registrants = Registrant.query({id: $scope.event.id});
 			if ($scope.event.staff_id == $scope.currnt_staff_id) {
 				// ログインユーザーが作成したイベントの場合は編集
 				$modal.open({templateUrl:"eventUpdate.html", scope: $scope});
 			} else {
-				// ログインユーザーが作成していないので、そのイベントの参加/不参加
-				$scope.registrants = Registrant.query({id: $scope.event.id});
+
 				// イベント参加/不参加登録者情報を取得してログインユーザーが登録済みか判定
 				isCurrenStaff($scope.registrants);
 				$modal.open({templateUrl:"eventRegist.html", scope: $scope});

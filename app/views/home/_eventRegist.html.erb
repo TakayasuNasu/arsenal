@@ -1,18 +1,47 @@
 <script type="text/ng-template" id="eventRegist.html">
 	<div class="modal-header">
 		<button type="button" class="close" ng-click="$dismiss()" aria-hidden="true">×</button>
-		<h4>「{{event.title}}」参加/不参加</h4>
+		<h4>「{{event.title}}」参加/不参加</h4>{{event.staff_name}}
 	</div>
 
 	<div class="modal-body">
-		<div>イベント内容</div>
-		<div>{{event.description}}</div>
 
-		<div>場所</div>
-		<div>{{event.location}}</div>
-
-		<div>時間</div>
-		<div>{{event.start | date:'yyyy-MM-dd HH:mm'}}</div>
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<td class="col-xs-3 col-md-3">
+						<strong>イベント作成者</strong>
+					</td>
+					<td class="col-xs-9 col-md-9 text-center">
+						{{event.staff_name}}
+					</td>
+				</tr>
+				<tr>
+					<td class="col-xs-3 col-md-3">
+						<strong>イベント内容</strong>
+					</td>
+					<td class="col-xs-9 col-md-9 text-center">
+						{{event.description}}
+					</td>
+				</tr>
+				<tr>
+					<td class="col-xs-3 col-md-3">
+						<strong>場所</strong>
+					</td>
+					<td class="col-xs-9 col-md-9 text-center">
+						{{event.location}}
+					</td>
+				</tr>
+				<tr>
+					<td class="col-xs-3 col-md-3">
+						<strong>時間</strong>
+					</td>
+					<td class="col-xs-9 col-md-9 text-center">
+						{{event.start | date:'yyyy-MM-dd HH:mm'}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
 
 		<select class="form-control"
 			ng-change="change(participations_id)"
@@ -36,7 +65,7 @@
 	</div>
 
 	<br>
-	<table class="table">
+	<table class="table table-striped">
 		<tbody>
 			<tr ng-repeat=" registrant in registrants ">
 				<td>

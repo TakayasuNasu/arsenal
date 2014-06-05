@@ -35,4 +35,22 @@
 		<button class="btn btn-success" ng-click="update()">編集</button>
 		<button class="btn btn-danger" ng-click="$close()">キャンセル</button>
 	</div>
+
+	<br>
+	<table class="table table-striped">
+		<tbody>
+			<tr ng-repeat=" registrant in registrants ">
+				<td>
+					<img ng-src="{{registrant.staff.mugshot_url}}"/>
+				</td>
+				<td>
+					{{registrant.staff.full_name}}
+				</td>
+				<td>
+					{{registrant.participation.name}}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
 </script>
