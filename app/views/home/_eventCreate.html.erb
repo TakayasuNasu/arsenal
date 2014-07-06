@@ -4,29 +4,51 @@
 		<h4>イベント登録</h4>
 	</div>
 
-	<form name="eventInfo">
+	<form class="form-horizontal" name="eventInfo" role="form">
 		<div class="modal-body">
-			<div>イベント名</div>
-			<div>
-				<input type="text" ng-model="newEvent.name" required>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">イベント名</label>
+				<div class="col-sm-9">
+	      			<input type="text"
+	      				class="form-control"
+	      				ng-model="newEvent.name"
+	      				placeholder="イベント名"
+	      				required>
+	    		</div>
 			</div>
 
-			<div>イベント内容</div>
-			<div>
-				<textarea ng-model="newEvent.description" required></textarea>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">イベント内容</label>
+				<div class="col-sm-9">
+	      			<input type="text"
+	      				class="form-control"
+	      				ng-model="newEvent.description"
+	      				placeholder="イベント内容"
+	      				required>
+	    		</div>
 			</div>
 
-			<div>場所</div>
-			<div>
-				<input type="text" ng-model="newEvent.location" required>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">場所</label>
+				<div class="col-sm-9">
+	      			<input type="text"
+	      				class="form-control"
+	      				ng-model="newEvent.location"
+	      				placeholder="場所"
+	      				required>
+	    		</div>
 			</div>
 
-			<div>開催日</div>
-			<div>
-				{{eventDay | date:'yyyy-MM-dd'}}
+			<div class="form-group">
+				<label class="col-sm-3 control-label">開催日</label>
+				<div class="col-sm-9">
+					<div>
+						{{newEvent.start | date:'yyyy-MM-dd'}}
+					</div>
+					<div ng-model="newEvent.start">
+					<timepicker ng-model="newEvent.start"></timepicker>
+	    		</div>
 			</div>
-			<div ng-model="eventDay">
-			<timepicker></timepicker>
 
 		</div>
 

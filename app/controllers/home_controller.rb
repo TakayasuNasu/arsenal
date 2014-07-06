@@ -37,7 +37,9 @@ class HomeController < ApplicationController
   def registrant
     render json: EventRegister.where(event_id: params[:event_id]).to_json(
       :include => {
-        :staff => {:except => [:created_at, :updated_at]},
+        :staff => {
+          :include => {:group => {:except => [:created_at, :updated_at]}},
+          :except => [:created_at, :updated_at]},
         :participation => {:except => [:created_at, :updated_at]}
       },
     :except => [:created_at, :updated_at])

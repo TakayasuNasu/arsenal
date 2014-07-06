@@ -1,11 +1,49 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+one:
+  yammer_id: 1502647614
+  full_name: 本田 圭介
+  first_name: 本田
+  last_name: 圭介
+  email: honda@hoge.com
+  nick_name: honda
+  tweets: 本日も晴天なり
+  mugshot_url: https://mug0.assets-yammer.com/mugshot/images/48x48/NZVk0-8JWrtjbLrN47Jd0vWpv3S1M-3n
+  prefecture_id: 1
+  group_id: 1
+  group_leader: false
+  department_id: 1
+  loan_company_id: 1
+  joined: 2014-01-01
+
+two:
+  yammer_id: 1502924622
+  full_name: 香川 信二
+  first_name: 香川
+  last_name: 信二
+  email: kagawa@hoge.com
+  nick_name: kagawa
+  tweets: 明日はれるかな
+  mugshot_url: https://mug0.assets-yammer.com/mugshot/images/48x48/NZVk0-8JWrtjbLrN47Jd0vWpv3S1M-3n
+  prefecture_id: 2
+  group_id: 2
+  group_leader: true
+  department_id: 2
+  loan_company_id: 2
+  joined: 2014-02-02
+
+three:
+  yammer_id: 1503554963
+  full_name: 中田 英寿
+  first_name: 中田
+  last_name: 英寿
+  email: nakata@hoge.com
+  nick_name: nakata
+  tweets: こんにちは
+  mugshot_url: https://mug0.assets-yammer.com/mugshot/images/48x48/NZVk0-8JWrtjbLrN47Jd0vWpv3S1M-3n
+  prefecture_id: 3
+  group_id: 3
+  group_leader: false
+  department_id: 3
+  loan_company_id: 3
+  joined: 2014-03-03

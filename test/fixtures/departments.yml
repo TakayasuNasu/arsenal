@@ -1,7 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: 開発
 
 two:
-  name: MyString
+  name: インフラ
+
+three:
+  name: その他

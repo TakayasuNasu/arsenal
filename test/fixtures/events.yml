@@ -2,14 +2,21 @@
 
 one:
   staff_id: 1
-  name: MyString
-  description: MyString
-  location: MyString
-  date: 
+  name: 勉強会
+  description: 勉強会です
+  location: 渋谷
+  date: 2014-06-11
 
 two:
-  staff_id: 1
-  name: MyString
-  description: MyString
-  location: MyString
-  date: 
+  staff_id: 2
+  name: フットサル
+  description: フットサルです
+  location: 東陽町
+  date: 2014-06-12
+
+three:
+  staff_id: 3
+  name: ホルモン
+  description: ホルモンです
+  location: 新橋
+  date: 2014-06-13
