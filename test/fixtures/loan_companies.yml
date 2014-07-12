@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  address: MyString
-  phone_number: MyString
-  pic: MyString
+  name: BTM
+  address: 東京都渋谷区道玄坂1-19-2
+  phone_number: 03-1111-2222
+  pic: Aさん
 
 two:
-  name: MyString
-  address: MyString
-  phone_number: MyString
-  pic: MyString
+  name: ジープラ
+  address: 東京都港区六本木7丁目18番18号
+  phone_number: 03-2222-3333
+  pic: Bさん
+
+three:
+  name: APC
+  address: 東京都千代田区鍛冶町2-5-5
+  phone_number: 03-4444-5555
+  pic: Cさん

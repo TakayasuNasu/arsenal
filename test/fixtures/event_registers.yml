@@ -6,6 +6,11 @@ one:
   participation_id: 1
 
 two:
+  event_id: 2
+  staff_id: 2
+  participation_id: 2
+
+three:
   event_id: 1
-  staff_id: 1
-  participation_id: 1
+  staff_id: 3
+  participation_id: 3

@@ -98,7 +98,7 @@ app.controller('CalendarCtrl', [
 
 		$scope.openCreateEventWindow = function( date ) {
 			$scope.newEvent = {};
-			$scope.eventDay = date;
+			$scope.newEvent.start = date;
 			$modal.open({templateUrl:"eventCreate.html", scope: $scope});
 		}
 
@@ -125,7 +125,7 @@ app.controller('CalendarCtrl', [
 				 'name': $scope.newEvent.name,
 				 'description': $scope.newEvent.description,
 				 'location': $scope.newEvent.location,
-				 'date': $scope.eventDay}
+				 'date': $scope.newEvent.start}
 				).success(function(data, status, headers, config) {
 					$window.location.href = '/arsenal/home'
 				}).error(function(data, status) {

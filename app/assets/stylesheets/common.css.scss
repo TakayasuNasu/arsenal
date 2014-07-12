@@ -58,4 +58,27 @@ body {
     word-wrap: break-word;
   }
 
+  #page-top {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    font-size: 77%;
+    a {
+      background: #666;
+      -moz-opacity: 0.5;
+      opacity: 0.5;
+      text-decoration: none;
+      color: #fff;
+      width: 100px;
+      padding: 30px 0;
+      text-align: center;
+      display: block;
+      border-radius: 5px;
+      &:hover {
+        text-decoration: none;
+        background: #999;
+      }
+    }
+  }
+
 }

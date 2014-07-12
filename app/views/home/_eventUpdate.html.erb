@@ -4,37 +4,58 @@
 		<h4>「{{event.title}}」編集</h4>
 	</div>
 
-	<div class="modal-body">
-		<div>イベント名</div>
-		<div>
-			<input type="text" ng-model="event.title">
+	<form class="form-horizontal" name="eventInfo" role="form">
+		<div class="modal-body">
+			<div class="form-group">
+				<label class="col-sm-3 control-label">イベント名</label>
+				<div class="col-sm-9">
+	      			<input type="text"
+	      				class="form-control"
+	      				ng-model="event.title"
+	      				required>
+	    		</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label">イベント内容</label>
+				<div class="col-sm-9">
+	      			<input type="text"
+	      				class="form-control"
+	      				ng-model="event.description"
+	      				required>
+	    		</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label">場所</label>
+				<div class="col-sm-9">
+	      			<input type="text"
+	      				class="form-control"
+	      				ng-model="event.location"
+	      				required>
+	    		</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label">開催日</label>
+				<div class="col-sm-9">
+					<div>
+						<input type="text" datepicker-popup ng-model="event.start" ng-required="true">
+					</div>
+					<timepicker ng-model="event.start"></timepicker>
+	    		</div>
+			</div>
+
+			<input type="hidden" ng-model="event.id">
+
 		</div>
 
-		<div>イベント内容</div>
-		<div>
-			<textarea ng-model="event.description"></textarea>
+		<div class="modal-footer">
+			<button class="btn btn-success" ng-click="update()" ng-disabled="eventInfo.$invalid">編集</button>
+			<button class="btn btn-danger" ng-click="$close()">キャンセル</button>
 		</div>
 
-		<div>場所</div>
-		<div>
-			<input type="text" ng-model="event.location">
-		</div>
-
-		<div>開催日</div>
-		<div>
-			<input type="text" datepicker-popup ng-model="event.start" ng-required="true">
-		</div>
-		<div ng-model="event.start">
-		<timepicker></timepicker>
-
-		<input type="hidden" ng-model="event.id">
-
-	</div>
-
-	<div class="modal-footer">
-		<button class="btn btn-success" ng-click="update()">編集</button>
-		<button class="btn btn-danger" ng-click="$close()">キャンセル</button>
-	</div>
+	</form>
 
 	<br>
 	<table class="table table-striped">
@@ -42,6 +63,9 @@
 			<tr ng-repeat=" registrant in registrants ">
 				<td>
 					<img ng-src="{{registrant.staff.mugshot_url}}"/>
+				</td>
+				<td>
+					{{registrant.staff.group.name}}
 				</td>
 				<td>
 					{{registrant.staff.full_name}}

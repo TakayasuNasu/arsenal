@@ -1,7 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: 東京
 
 two:
-  name: MyString
+  name: 福岡
+
+three:
+  name: 札幌
