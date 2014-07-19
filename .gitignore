@@ -16,5 +16,6 @@
 /tmp
 
 /config/constants.yml
+config/database.yml
 .DS_Store
 .project
