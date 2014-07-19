@@ -4,6 +4,8 @@ Arsenal::Application.routes.draw do
   post "staffs/update"
   get  "staffs/regist_confirm"
 
+  post "loan_companies/create"
+
   post "events/create"
   post "events/update"
 

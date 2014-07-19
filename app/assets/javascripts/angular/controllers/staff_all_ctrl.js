@@ -29,11 +29,10 @@ app.controller('StaffAllCtrl', [
         $scope.currnt_staff_id = current_staff.id;
     });
 
-    var loan_company_data = {};
-    var markerData = [];
-
     $scope.staffs = StaffAll.query();
     console.log($scope.staffs);
+
+    $scope.loan_companies = LoanCompany.query();
 
     $scope.myMarkers = [];
     var marker = {};
@@ -78,19 +77,27 @@ app.controller('StaffAllCtrl', [
     	zoom: 13
     }
 
+    var modalInstance;
+    // ログインユーザーの場合は更新用、それ以外は詳細情報用のモーダルを表示
     $scope.open = function(id) {
-        find(id);
+        find(id); // 取得と設定をしてるので返り値を取らない
         if ($scope.currnt_staff_id == id) {
             // 出向先、班、所属、出身地を取得
-            $scope.loan_companies = LoanCompany.query();
             $scope.groups = Group.query();
             $scope.departments = Department.query();
             $scope.prefectures = Prefecture.query();
 
-            $modal.open({templateUrl:"update.html", scope: $scope});
+            modalInstance = $modal.open({templateUrl:"update.html", scope: $scope});
         } else {
-            $modal.open({templateUrl:"show.html", scope: $scope});
+            modalInstance = $modal.open({templateUrl:"show.html", scope: $scope});
         }
+    }
+
+    // 出向先新規登録
+    $scope.openLoanCompanyRegist = function(){
+        modalInstance.close();
+        $scope.loanCompanyData = {};
+        $modal.open({templateUrl:"loanCompanyRegist.html", scope: $scope});
     }
 
     // 社員情報を更新
@@ -108,6 +115,42 @@ app.controller('StaffAllCtrl', [
             }).error(function(data, status) {
                 console.log('error:' + status);
         });
+    }
+
+    // 既に登録済みか確認
+    $scope.isRegisteredName = function(data) {
+        var registFlag = false;
+        angular.forEach($scope.loan_companies, function(loan_company, key){
+            if (angular.equals(data, loan_company.name)) {
+                registFlag =  true;
+            }
+        });
+        return registFlag;
+    }
+
+    $scope.isRegisteredAddress = function(data) {
+        var registFlag = false;
+        angular.forEach($scope.loan_companies, function(loan_company, key){
+            if (angular.equals(data, loan_company.address)) {
+                registFlag =  true;
+            }
+        });
+        return registFlag;
+    }
+
+    // 出向先を登録
+    $scope.create = function(){
+        $http.post('/arsenal/loan_companies/create', {
+            'name': $scope.loanCompanyData.name,
+            'address': $scope.loanCompanyData.address,
+        })
+        .success(function(data, status, headers, config)  {
+            $window.location.href = '/arsenal/home'
+        })
+        .error(function(data, status){
+            console.log('error:' + status);
+        });
+
     }
 
     // idに紐づくユーザー情報を取得・設定

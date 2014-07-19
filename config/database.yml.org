@@ -11,10 +11,10 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: arsenal_dev
+  database: yourDB_dev
   pool: 5
   username: root
-  password: root
+  password:
   socket: /var/lib/mysql/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -23,17 +23,17 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  database: arsenal_test
+  database: yourDB_test
   pool: 5
   username: root
-  password: root
+  password:
   socket: /var/lib/mysql/mysql.sock
 
 production:
   adapter: mysql2
   encoding: utf8
-  database: arsenal
+  database: yourDB
   pool: 5
   username: root
-  password: root
+  password:
   socket: /var/lib/mysql/mysql.sock
