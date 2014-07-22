@@ -44,6 +44,24 @@
 			</tbody>
 		</table>
 
+		<div>
+			所属yammerグループ表示
+			<input type="checkbox" ng-model="checked">
+			<br/>
+			<span ng-show="checked">
+        		<table class="table-striped">
+        			<tr ng-repeat="pg in privateGroups">
+        				<td class="col-xs-4 col-md-4">
+        					{{pg.private_group.name}}
+        				</td>
+        				<td class="col-xs-8 col-md-8">
+        					{{pg.private_group.description}}
+        				</td>
+        			</tr>
+        		</table>
+      		</span>
+		</div>
+
 	</div>
 
 	<div class="modal-footer">

@@ -12,6 +12,10 @@ class Staff < ActiveRecord::Base
   belongs_to :loan_company
   belongs_to :prefecture
 
+  has_many :events, dependent: :destroy
+  has_many :event_registers, dependent: :destroy
+  has_many :private_group_registers, dependent: :destroy
+
 # yammer認証後にユーザー登録を行う
 def self.find_for_yammer_oauth(auth)
     staff = Staff.where(yammer_id: auth.uid, email: auth.info.email).first
@@ -69,10 +73,16 @@ def self.find_for_yammer_oauth(auth)
     return unregistered_staffs
   end
 
-  # yammerのidに紐づく社員情報を取得syutoku
+  # yammerのidに紐づく社員情報をapiから取得
   def self.find_by_yammer_id(yammer_id)
     staff_info = @@yammer.get_user(yammer_id)
     return staff_info.body
+  end
+
+  # ユーザーが所属しているグループを取得
+  def self.get_groups_for_user(yammer_id)
+    groups = @@yammer.groups_for_user(yammer_id)
+    return groups.body
   end
 
   # 社員情報を登録

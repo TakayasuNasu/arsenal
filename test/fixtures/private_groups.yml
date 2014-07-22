@@ -1,0 +1,41 @@
+one:
+  id: 1
+  yammer_group_id: 4351703
+  name: 4班
+  description:
+
+two:
+  id: 2
+  yammer_group_id: 4448838
+  name: BTM フットサル
+  description:
+
+three:
+  id: 3
+  yammer_group_id: 3515881
+  name: Developers.IO
+  description: 社内勉強会のグループです ドキュメントはこちら→ http://www.i-nasu.com/wiki/Home
+
+four:
+  id: 4
+  yammer_group_id: 2415974
+  name: BBQ
+  description:
+
+five:
+  id: 5
+  yammer_group_id: 2024478
+  name: BTM　吉田
+  description:
+
+six:
+  id: 6
+  yammer_group_id: 2024482
+  name: Competitive Intelligence
+  description:
+
+seven:
+  id: 7
+  yammer_group_id: 2024483
+  name: Design Ideas
+  description:
