@@ -39,7 +39,8 @@
 						  ng-model="registered_staff.tweets"
 						  ng-maxlength="50">
 				</textarea>
-				<span ng-show="currentStaff.tweets.$error.maxlength" class="text-danger">
+				<span ng-show="currentStaff.tweets.$error.maxlength"
+					  class="text-danger">
 					&nbsp;50文字こえてます
 				</span>
 				<span ng-hide="currentStaff.tweets.$error.maxlength">
@@ -48,11 +49,46 @@
 			</div>
 		</form>
 
+		<br>
+		<hr>
+		<div>
+			所属yammerグループ表示
+			<input type="checkbox" ng-model="checked">
+			<br/>
+			<span ng-show="checked">
+        		<table class="table-striped">
+        			<tr ng-repeat="pg in privateGroups">
+        				<td class="col-xs-4 col-md-4">
+        					{{pg.private_group.name}}
+        				</td>
+        				<td class="col-xs-8 col-md-8">
+        					{{pg.private_group.description}}
+        				</td>
+        			</tr>
+        		</table>
+      		</span>
+		</div>
+
 	</div>
 
 	<div class="modal-footer">
-		<button class="btn btn-primary" ng-disabled="currentStaff.$invalid" ng-click="openLoanCompanyRegist()" >新規出向先登録</button>
-		<button class="btn btn-success" ng-disabled="currentStaff.$invalid" ng-click="update()">編集</button>
+
+		<button class="btn btn-primary"
+				ng-click="openLoanCompanyRegist()" >
+				新規出向先登録
+		</button>
+
+		<button class="btn btn-info"
+				ng-click="addPrivateGroup()" >
+				所属Yammerグループ登録
+		</button>
+
+		<button class="btn btn-success"
+				ng-disabled="currentStaff.$invalid"
+				ng-click="update()">
+				編集
+		</button>
+
 		<button class="btn btn-danger" ng-click="$close()">キャンセル</button>
 	</div>
 

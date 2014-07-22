@@ -18,3 +18,8 @@ var app = angular.module('Arsenal');
 app.factory('Prefecture', function($resource) {
   return $resource('/arsenal/api/prefecture/:id', {id: '@id'});
 });
+
+var app = angular.module('Arsenal');
+app.factory('PrivateGroup', function($resource) {
+  return $resource('/arsenal/api/private_group/:id', {id: '@id'});
+});

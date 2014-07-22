@@ -12,6 +12,7 @@ app.controller('StaffAllCtrl', [
   'Group',
   'Department',
   'Prefecture',
+  'PrivateGroup',
   function( $scope,
             $modal,
             $log,
@@ -22,7 +23,8 @@ app.controller('StaffAllCtrl', [
             LoanCompany,
             Group,
             Department,
-            Prefecture ) {
+            Prefecture,
+            PrivateGroup ) {
 
     // ログインしたユーザーのidを取得
     StaffInfo.query().$promise.then(function(current_staff) {
@@ -59,6 +61,9 @@ app.controller('StaffAllCtrl', [
                                 marker.group_id = staff.group_id;
                                 marker.mugshot_url = staff.mugshot_url;
                                 marker.loan_company = staff.loan_company.name;
+                                marker.department = staff.department.name;
+                                marker.group = staff.group.name;
+                                marker.prefecture = staff.prefecture.name;
                                 marker.options = {title: staff.full_name}
                                 $scope.myMarkers.push(marker);
                                 marker = {};
@@ -80,6 +85,7 @@ app.controller('StaffAllCtrl', [
     var modalInstance;
     // ログインユーザーの場合は更新用、それ以外は詳細情報用のモーダルを表示
     $scope.open = function(id) {
+        $scope.privateGroups = PrivateGroup.query({id: id});
         find(id); // 取得と設定をしてるので返り値を取らない
         if ($scope.currnt_staff_id == id) {
             // 出向先、班、所属、出身地を取得
@@ -153,32 +159,59 @@ app.controller('StaffAllCtrl', [
 
     }
 
+    // yammerグループを登録
+    $scope.addPrivateGroup = function(){
+        $http.post('/arsenal/staffs/add_private_group', {
+            'id': $scope.currnt_staff_id
+        })
+        .success(function(data, status, headers, config)  {
+            $window.location.href = '/arsenal/home'
+        })
+        .error(function(data, status){
+            console.log('error:' + status);
+        });
+    }
+
+    $scope.findBy = function(name){
+        $log.log(name);
+        $scope.query = name;
+    }
+
     // idに紐づくユーザー情報を取得・設定
     find = function(id){
         $scope.registered_staff = {};
         $scope.staffs.$promise.then(function(staff_list) {
             angular.forEach(staff_list, function(staff, key){
+
+                // ユーザーが自分の詳細画面を開く場合、各種情報を設定
                 if (staff.id == id) {
                     $scope.registered_staff.name = staff.full_name;
                     $scope.registered_staff.mugshot_url = staff.mugshot_url;
                     $scope.registered_staff.tweets = staff.tweets;
+
+                    // 所属が未登録の場合もあるので、登録している場合のみ設定
                     if (staff.department_id != null) {
                         $scope.registered_staff.department_id = staff.department_id;
                         $scope.registered_staff.department_name = staff.department.name;
                     }
+
+                    // グロープが登録済みの場合のみ設定
                     if (staff.group_id != null) {
                         $scope.registered_staff.group_id = staff.group_id;
                         $scope.registered_staff.group_name = staff.group.name;
                     }
+
                     if (staff.prefecture_id != null) {
                         $scope.registered_staff.prefecture_id = staff.prefecture_id;
                         $scope.registered_staff.prefecture_name = staff.prefecture.name;
                     }
+
                     if (staff.loan_company_id != null) {
                         $scope.registered_staff.loan_company_id = staff.loan_company_id;
                         $scope.registered_staff.loan_company_name = staff.loan_company.name;
                     }
                 }
+
             });
         });
     }

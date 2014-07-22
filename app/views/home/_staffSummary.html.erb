@@ -40,13 +40,19 @@
 				</a>
 			</td>
 			<td class="hidden-xs col-md-2">
-				{{staff.department.name}}
+				<a ng-click="findBy(staff.department.name)"/>
+					{{staff.department.name}}
+				</a>
 			</td>
 			<td class="hidden-xs col-md-1">
-				{{staff.group.name}}
+				<a ng-click="findBy(staff.group.name)"/>
+					{{staff.group.name}}
+				</a>
 			</td>
 			<td class="hidden-xs col-md-2">
-				{{staff.prefecture.name}}
+				<a ng-click="findBy(staff.prefecture.name)"/>
+					{{staff.prefecture.name}}
+				</a>
 			</td>
 			<td class="col-xs-3 col-md-3">
 				{{staff.tweets}}

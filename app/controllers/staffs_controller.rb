@@ -2,7 +2,7 @@ class StaffsController < ApplicationController
 
 	before_filter :authenticate_admin_user! ,:only=>[:regist_confirm]
 
-  before_action :set_staffs, only: [:update]
+  before_action :set_staffs, only: [:update, :add_private_group]
 
   def update
     if @staffs.update(staff_params)
@@ -28,6 +28,12 @@ class StaffsController < ApplicationController
   def show
   	all_staff = Staff.get_all_staff
   	render json: Staff.get_unregistered_staff(all_staff)
+  end
+
+  def add_private_group
+    PrivateGroup.regist_all @staffs
+    PrivateGroupRegister.regist @staffs
+    render :nothing => true
   end
 
   private

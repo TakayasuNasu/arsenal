@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140518145609) do
+ActiveRecord::Schema.define(version: 20140720074234) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",               default: "", null: false
@@ -75,6 +75,21 @@ ActiveRecord::Schema.define(version: 20140518145609) do
 
   create_table "prefectures", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "private_group_registers", force: true do |t|
+    t.integer  "staff_id",         null: false
+    t.integer  "private_group_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "private_groups", force: true do |t|
+    t.integer  "yammer_group_id", null: false
+    t.string   "name",            null: false
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

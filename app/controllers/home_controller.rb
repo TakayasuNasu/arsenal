@@ -5,7 +5,6 @@ class HomeController < ApplicationController
   def index
   end
 
-
   def all
     render json: Staff.all.order("group_id, nick_name").to_json(
     	:include => {
@@ -59,6 +58,15 @@ class HomeController < ApplicationController
 
   def get_prefecture
     render json: Prefecture.all
+  end
+
+  def get_private_group_register
+    render json: PrivateGroupRegister.where(staff_id: params[:staff_id]).to_json(
+        :include => {
+          :private_group => {:except => [:created_at, :updated_at]}
+        },
+        :except => [:created_at, :updated_at]
+      )
   end
 
 end

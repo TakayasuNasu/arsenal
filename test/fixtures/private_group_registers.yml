@@ -1,0 +1,11 @@
+one:
+  staff_id: 1
+  private_group_id: 1
+
+two:
+  staff_id: 1
+  private_group_id: 2
+
+three:
+  staff_id: 2
+  private_group_id: 1

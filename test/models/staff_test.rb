@@ -47,4 +47,10 @@ class StaffTest < ActiveSupport::TestCase
 		assert_equal "山崎 賢一", si[:full_name], "Failed to find_by_yammer_id"
 	end
 
+	test "get groups for user" do
+		id = 1502647614
+		groups = Staff.get_groups_for_user id
+		refute_nil groups, "Failed groups object is null"
+	end
+
 end

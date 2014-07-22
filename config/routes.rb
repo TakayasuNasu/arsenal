@@ -2,6 +2,7 @@ Arsenal::Application.routes.draw do
 
   post "staffs/regist"
   post "staffs/update"
+  post "staffs/add_private_group"
   get  "staffs/regist_confirm"
 
   post "loan_companies/create"
@@ -44,6 +45,7 @@ Arsenal::Application.routes.draw do
     get  "/group(.:format)" => "home#get_group"
     get  "/department(.:format)" => "home#get_department"
     get  "/prefecture(.:format)" => "home#get_prefecture"
+    get  "/private_group/:staff_id(.:format)" => "home#get_private_group_register"
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

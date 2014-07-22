@@ -16,7 +16,20 @@
 				</div>
 
 				<div class="row">
-					<input ng-model="query" class="col-xs-12 col-md-3" placeholder="社員を検索できます">
+					<div class="input-group col-md-3">
+						<input
+							ng-model="query"
+							class="form-control"
+							placeholder="社員を検索できます">
+						<span class="input-group-btn">
+							<button
+							type="button"
+							class="btn btn-success"
+							ng-click="query = ''">
+							クリア
+						</button>
+						</span>
+					</div>
 				</div>
 
 				<hr>
