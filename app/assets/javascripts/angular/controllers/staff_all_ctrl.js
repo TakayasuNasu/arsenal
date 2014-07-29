@@ -37,7 +37,6 @@ app.controller('StaffAllCtrl', [
     $scope.loan_companies = LoanCompany.query();
 
     $scope.myMarkers = [];
-    var marker = {};
 
     // 社員一覧情報から現場の住所を取得してgooglemapにアイコンを表示
     $scope.staffs.$promise.then(function(staff_list) {
@@ -53,20 +52,9 @@ app.controller('StaffAllCtrl', [
                             if (results[0].geometry) {
                                 // geometryから住所の緯度・軽度を取得
                                 var latlng = results[0].geometry.location;
-                                marker.latitude = latlng.lat();
-                                marker.longitude = latlng.lng();
-                                marker.title = staff.full_name;
-                                marker.nick_name = staff.nick_name;
-                                marker.email = staff.email;
-                                marker.group_id = staff.group_id;
-                                marker.mugshot_url = staff.mugshot_url;
-                                marker.loan_company = staff.loan_company.name;
-                                marker.department = staff.department.name;
-                                marker.group = staff.group.name;
-                                marker.prefecture = staff.prefecture.name;
-                                marker.options = {title: staff.full_name}
-                                $scope.myMarkers.push(marker);
-                                marker = {};
+
+                                // googlemapに表示するマーカー情報を取得
+                                $scope.myMarkers.push( getMarker(latlng, staff) );
                             }
                         }
                 });
@@ -214,6 +202,36 @@ app.controller('StaffAllCtrl', [
 
             });
         });
+    }
+
+    // googlemapに表示するマーカー情報を取得
+    getMarker = function(latlng, staff){
+        var marker = {};
+
+        marker.latitude = latlng.lat();
+        marker.longitude = latlng.lng();
+        marker.title = staff.full_name;
+        marker.nick_name = staff.nick_name;
+        marker.email = staff.email;
+        marker.group_id = staff.group_id;
+        marker.mugshot_url = staff.mugshot_url;
+        marker.options = {title: staff.full_name}
+
+        // 以下、設定してあるもののみ取得する
+        if (staff.loan_company != null) {
+            marker.loan_company = staff.loan_company.name;
+        }
+        if (staff.department != null) {
+            marker.department = staff.department.name;
+        }
+        if (staff.group != null) {
+            marker.group = staff.group.name;
+        }
+        if (staff.prefecture != null) {
+            marker.prefecture = staff.prefecture.name;
+        }
+
+        return marker;
     }
   }
 ]);
